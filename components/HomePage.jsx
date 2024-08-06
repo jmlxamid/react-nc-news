@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const HomePage = () => {
+  const [articles, setArticles] = useState([]);
   return <div>HomePage</div>;
 };
 
