@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "../src/api";
 import { Link } from "react-router-dom";
+import ArticleCard from "./ArticleCard";
 
 const ArticleList = () => {
-  const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     getArticles()
       .then((data) => {
-        setArticles(data);
+        setArticle(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -29,18 +30,8 @@ const ArticleList = () => {
     <div className="article-list">
       <h1>All Articles</h1>
       <ul>
-        {articles.map((article) => (
-          <li className="article-card" key={article.article_id}>
-            <h2>
-              <Link to={`/articles/${article.article_id}`}>
-                {article.title}
-              </Link>
-            </h2>
-            <p>By {article.author}</p>
-            <p>
-              Pubished on {new Date(article.created_at).toLocaleDateString()}
-            </p>
-          </li>
+        {article.map((article) => (
+          <ArticleCard key={article.article_id} article={article} />
         ))}
       </ul>
     </div>
