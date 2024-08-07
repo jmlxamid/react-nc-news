@@ -11,8 +11,8 @@ export function getArticles() {
   });
 }
 
-export function getArticleById(id) {
-  return apiClient.get(`articles/${id}`).then((response) => {
+export function getArticleById(article_id) {
+  return apiClient.get(`articles/${article_id}`).then((response) => {
     return response.data.article;
   });
 }

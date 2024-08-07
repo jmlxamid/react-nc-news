@@ -1,11 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ArticleCard = ({ title, content }) => {
+const ArticleCard = ({ article }) => {
   return (
-    <div className="article-card">
-      <h2>{title}</h2>
-      <p>{content}</p>
-    </div>
+    <li className="article-card" key={article.article_id}>
+      <h2>
+        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+      </h2>
+      <p>By {article.author}</p>
+      <p>Pubished on {new Date(article.created_at).toLocaleDateString()}</p>
+    </li>
   );
 };
 
