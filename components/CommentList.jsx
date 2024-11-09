@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../src/api";
 import CommentCard from "./CommentCard";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const CommentList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -27,8 +29,8 @@ const CommentList = ({ article_id }) => {
     }
   }, [article_id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.msg}</p>;
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage msg={error.msg} />;
 
   return (
     <div className="comment-list">

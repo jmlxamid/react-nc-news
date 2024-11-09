@@ -7,6 +7,8 @@ import {
 } from "../src/api";
 import CommentList from "./CommentList";
 import { UserContext } from "../src/contexts/UserContext";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const ArticleDetail = () => {
   const { article_id } = useParams();
@@ -65,8 +67,8 @@ const ArticleDetail = () => {
     );
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.msg}</p>;
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage msg={error.msg} />;
 
   return (
     <div className="article-detail">

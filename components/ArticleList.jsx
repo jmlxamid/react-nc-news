@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getArticles } from "../src/api";
 import { Link } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const ArticleList = () => {
   const [article, setArticle] = useState([]);
@@ -23,8 +25,8 @@ const ArticleList = () => {
         );
       });
   }, []);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.msg}</p>;
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage msg={error.msg} />;
 
   return (
     <div className="article-list">
