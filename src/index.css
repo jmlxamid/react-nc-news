@@ -1,5 +1,8 @@
+/* ArticleList.css */
 .article-list {
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .article-list h1 {
@@ -7,28 +10,56 @@
   margin-bottom: 20px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+/* ArticleCard.css */
 .article-card {
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 15px;
-  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #fff;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .article-card h2 {
+  font-size: 1.5rem;
   margin-top: 0;
+  color: #333;
 }
 
 .article-card p {
   margin: 5px 0;
+  color: #555;
 }
 
-@media (max-width: 768px) {
-  .article-card {
-    padding: 10px;
-  }
+.article-card a {
+  text-decoration: none;
+  color: #007acc;
+}
+
+.article-card a:hover {
+  color: #005f99;
 }
