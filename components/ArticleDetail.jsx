@@ -79,19 +79,39 @@ const ArticleDetail = () => {
           <p>
             Published on {new Date(article.created_at).toLocaleDateString()}
           </p>
-          <img src={article.article_img_url} alt={article.title} />
-          <div>{article.body}</div>
-          <p>Votes: {article.votes}</p>
-          {loggedInUser ? (
-            <div>
-              <button onClick={() => handleVote("up")}>Vote Up</button>
-              <button onClick={() => handleVote("down")}>Vote Down</button>
+          <img
+            src={article.article_img_url}
+            alt={article.title}
+            className="article-image"
+          />
+          <div className="article-body">{article.body}</div>
+          <div className="article-footer">
+            <div className="article-vote-counter">
+              <span>{article.votes}</span> Votes
             </div>
-          ) : (
-            <p>Please log in to vote.</p>
-          )}
+            {loggedInUser ? (
+              <div className="vote-buttons">
+                <button
+                  className="vote-button upvote"
+                  onClick={() => handleVote("up")}
+                >
+                  <i className="fa-solid fa-arrow-up"></i> Vote Up
+                </button>
+                <button
+                  className="vote-button downvote"
+                  onClick={() => handleVote("down")}
+                >
+                  <i className="fa-solid fa-arrow-down"></i> Vote Down
+                </button>
+              </div>
+            ) : (
+              <p className="login-message">Please log in to vote.</p>
+            )}
+          </div>
           <hr />
-          <h2>Comments</h2>
+          <h2>
+            <i className="fa-solid fa-comments"></i> Comments
+          </h2>
           <CommentList article_id={article_id} />
         </>
       )}

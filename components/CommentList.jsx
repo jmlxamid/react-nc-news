@@ -1,3 +1,4 @@
+// CommentList.jsx
 import React, { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../src/api";
 import CommentCard from "./CommentCard";

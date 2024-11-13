@@ -1,6 +1,5 @@
-// App.js
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ArticleList from "../components/ArticleList";
 import ArticleDetail from "../components/ArticleDetail";
 import { getUsers } from "./api";
@@ -10,6 +9,7 @@ import Header from "../components/Header";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getUsers()
@@ -19,9 +19,11 @@ function App() {
       });
   }, []);
 
+  const isDetailPage = location.pathname.startsWith("/articles/");
+
   return (
     <UserProvider>
-      <div className="App">
+      <div className={isDetailPage ? "center-layout" : "grid-layout"}>
         <Header />
         <UserDropdown users={users} />
         <Routes>

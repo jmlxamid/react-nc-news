@@ -31,7 +31,7 @@ const ArticleList = () => {
 
   return (
     <div className="article-list">
-      <h1>All Articles</h1>
+      <h1>Articles</h1>
       <div className="article-grid">
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />

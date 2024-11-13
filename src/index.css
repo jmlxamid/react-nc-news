@@ -1,42 +1,66 @@
-/* ArticleList.css */
-.article-list {
+/* index.css */
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* ========== Global Layout Styles ========== */
+.grid-layout {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #f5f5f5; /* Light grey background for the grid layout */
+}
+
+.center-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px; /* Centers and limits the width */
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #ffffff; /* White background for the detail page */
+}
+
+/* ========== ArticleList Page Styles ========== */
+.article-list {
+  width: 100%;
 }
 
 .article-list h1 {
   text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #333; /* Black text for the title */
 }
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Keeps the grid layout */
   gap: 20px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .article-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column for smaller screens */
   }
 }
 
-.header {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  padding: 20px;
-  background-color: #f8f8f8;
-  color: #333;
-}
-/* ArticleCard.css */
 .article-card {
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Light grey border */
   border-radius: 8px;
   padding: 15px;
+  background-color: #fff; /* White background for each article card */
+  text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
-  background-color: #fff;
+}
+
+.article-card img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 200px;
 }
 
 .article-card:hover {
@@ -45,21 +69,101 @@
 }
 
 .article-card h2 {
-  font-size: 1.5rem;
-  margin-top: 0;
-  color: #333;
+  font-size: 1.8rem;
+  margin: 10px 0;
+  color: #333; /* Black text for the article title */
 }
 
-.article-card p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.article-card a {
+.article-card .article-link {
   text-decoration: none;
-  color: #007acc;
+  color: inherit; /* Ensures the link takes the color of the parent */
 }
 
-.article-card a:hover {
-  color: #005f99;
+.article-card .article-link:hover h2 {
+  color: #ff7f32; /* Orange color on hover */
+}
+
+/* ========== Article Detail Styles (with Comments) ========== */
+.comment-list {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.comment-card {
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9; /* Light grey background for comments */
+  margin-bottom: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.comment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comment-card p {
+  margin: 8px 0;
+  color: #555; /* Dark grey text for comment body */
+}
+
+.comment-card strong {
+  color: #333; /* Black text for the comment author's name */
+}
+
+/* ========== Header Styles ========== */
+.header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #ff7f32; /* Orange background for header */
+  color: #ffffff; /* White text for header */
+  width: 100%;
+}
+
+/* ========== Button Styles ========== */
+.vote-button {
+  background-color: #007bff; /* Blue background for the buttons */
+  color: white; /* White text on the button */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.vote-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.vote-button.upvote {
+  background-color: #28a745; /* Green for upvote button */
+}
+
+.vote-button.upvote:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.vote-button.downvote {
+  background-color: #dc3545; /* Red for downvote button */
+}
+
+.vote-button.downvote:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* ========== Login Message Styles ========== */
+.login-message {
+  font-size: 1rem;
+  color: #777; /* Darker grey for the login message */
+}
+
+/* ========== Footer Styles (Optional) ========== */
+.footer {
+  background-color: #333; /* Black background for footer */
+  color: white; /* White text */
+  text-align: center;
+  padding: 10px 0;
 }
