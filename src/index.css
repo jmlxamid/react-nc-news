@@ -1,9 +1,8 @@
-/* index.css */
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 /* ========== Global Layout Styles ========== */
 .grid-layout {
-  padding: 20px;
+  padding: 30px; /* Increased padding for better spacing */
   max-width: 1200px;
   margin: 0 auto;
   background-color: #f5f5f5; /* Light grey background for the grid layout */
@@ -13,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 40px; /* Increased padding for more breathing room */
   max-width: 800px; /* Centers and limits the width */
   margin: 0 auto;
   box-sizing: border-box;
@@ -21,6 +20,30 @@
 }
 
 /* ========== ArticleList Page Styles ========== */
+.article-list {
+  margin-top: 20px; /* Add some space above the list */
+}
+
+.article-grid {
+  display: grid; /* Ensure grid layout is set */
+  grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+  gap: 20px; /* Space between grid items */
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 1024px) {
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+  }
+}
+
+/* ========== ArticleCard Styles ========== */
 .article-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -28,6 +51,8 @@
   background-color: #fff;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%; /* Ensure cards take full width of their column */
+  overflow: hidden; /* Prevent content from overflowing the card */
 }
 
 .article-card img {
@@ -59,7 +84,21 @@
   color: #ff7f32;
 }
 
-/* ========== Article Detail Styles (with Comments) ========== */
+/* Enhanced Hover Effects */
+.article-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Debugging Style (Optional) ========== */
+/* Uncomment to visually debug layout boundaries */
+/*
+.article-card {
+  outline: 1px solid red;
+}
+*/
+
+/* ========== Responsive Comments Section ========== */
 .comment-list {
   margin-top: 20px;
   width: 100%;
@@ -99,19 +138,30 @@
   width: 100%;
 }
 
+/* ========== Footer Styles ========== */
+.footer {
+  background-color: #333; /* Black background for footer */
+  color: white; /* White text */
+  text-align: center;
+  padding: 10px 0;
+}
+
 /* ========== Button Styles ========== */
 .vote-button {
   background-color: #007bff; /* Blue background for the buttons */
   color: white; /* White text on the button */
-  border: none;
+  border: 1px solid #ddd; /* Add a light border */
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: all 0.2s ease; /* Smooth transitions for all properties */
 }
 
 .vote-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Add a slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .vote-button.upvote {
@@ -134,12 +184,4 @@
 .login-message {
   font-size: 1rem;
   color: #777; /* Darker grey for the login message */
-}
-
-/* ========== Footer Styles (Optional) ========== */
-.footer {
-  background-color: #333; /* Black background for footer */
-  color: white; /* White text */
-  text-align: center;
-  padding: 10px 0;
 }

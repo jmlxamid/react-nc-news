@@ -4,6 +4,7 @@ import { getArticles } from "../src/api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
+import "../src/index.css";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
@@ -33,6 +34,8 @@ const ArticleList = () => {
     <div className="article-list">
       <h1>Articles</h1>
       <div className="article-grid">
+        {" "}
+        {/* This is where grid styles apply */}
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
         ))}
