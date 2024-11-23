@@ -1,21 +1,16 @@
 // ArticleCard.js
+
 import React from "react";
-import { Link } from "react-router-dom"; // Import the Link component for routing
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article, onVoteUp, onVoteDown, isLoggedIn }) => {
   return (
     <div className="article-card">
-      <div className="article-header">
-        {/* Wrap the article title in a Link for navigation */}
-        <Link to={`/articles/${article.article_id}`} className="article-link">
-          <img
-            src={article.image_url}
-            alt={article.title}
-            className="article-image"
-          />
-          <h2>{article.title}</h2>
-        </Link>
-      </div>
+      <Link to={`/articles/${article.article_id}`} className="article-link">
+        {/* Display the article image above the title */}
+        <img src={article.article_img_url} alt={article.title} />
+        <h2 className="article-title">{article.title}</h2>
+      </Link>
       <p className="article-body">{article.body}</p>
       <div className="article-footer">
         {isLoggedIn ? (

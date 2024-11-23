@@ -6,6 +6,8 @@ import { getUsers } from "./api";
 import { UserProvider } from "./contexts/UserContext";
 import UserDropdown from "../components/UserDropdown";
 import Header from "../components/Header";
+// App.js or main entry file
+import "./index.css";
 
 function App() {
   const [users, setUsers] = useState([]);
