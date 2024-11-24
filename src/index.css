@@ -142,6 +142,11 @@ body {
   color: #333333;
 }
 
+/* ========== Blue Comment Emoji Icon ========== */
+.fa-comments {
+  color: #004499; /* Blue color */
+}
+
 /* ========== Header Styles ========== */
 .header {
   text-align: center;
