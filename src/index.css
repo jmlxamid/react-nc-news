@@ -200,3 +200,30 @@ body {
   font-size: 1rem;
   color: #777777; /* Slightly darker grey for login messages */
 }
+
+/* ========== Lottie Animation Styles ========== */
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #f5f5dc; /* Matches root cream tone */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 400px; /* Restrict size for better responsiveness */
+  box-sizing: border-box;
+}
+
+.lottie {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Lottie inside the center-layout for consistency */
+.center-layout .lottie-container {
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+}
