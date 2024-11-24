@@ -4,6 +4,7 @@ import { getCommentsByArticleId } from "../src/api";
 import CommentCard from "./CommentCard";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
+import "../src/index.css";
 
 const CommentList = ({ article_id }) => {
   const [comments, setComments] = useState([]);

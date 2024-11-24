@@ -1,4 +1,5 @@
 import React from "react";
+import "../src/index.css";
 
 const CommentCard = ({ comment, onVoteUp, onVoteDown }) => {
   return (

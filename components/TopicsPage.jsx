@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
 import { getTopics } from "../src/api";
+import "../src/index.css";
 
 const TopicsPage = () => {
   const [topics, setTopics] = useState([]);

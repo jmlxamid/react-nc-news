@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import "../src/index.css";
 
 const ArticleCard = ({ article, onVoteUp, onVoteDown, isLoggedIn }) => {
   return (

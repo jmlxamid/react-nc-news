@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../src/contexts/UserContext";
+import "../src/index.css";
 
 const UserDropdown = ({ users }) => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);

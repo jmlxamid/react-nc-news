@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../src/contexts/UserContext";
 import { getUserByUsername } from "../src/api";
+import "../src/index.css";
 
 const UserPage = () => {
   const { username } = useParams();

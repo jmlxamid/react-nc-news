@@ -9,6 +9,7 @@ import CommentList from "./CommentList";
 import { UserContext } from "../src/contexts/UserContext";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
+import "../src/index.css";
 
 const ArticleDetail = () => {
   const { article_id } = useParams();

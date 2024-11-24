@@ -1,45 +1,67 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 /* ========== Global Layout Styles ========== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2; /* Light grey background for the whole page */
+  color: #333333; /* Dark grey text for readability */
+}
+
+#root {
+  background-color: #f5f5dc; /* Cream tone for the root background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== Global Container Styles ========== */
 .grid-layout {
-  padding: 30px; /* Increased padding for better spacing */
+  padding: 30px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f5f5f5; /* Light grey background for the grid layout */
+  background-color: #ffffff; /* White background for content areas */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .center-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px; /* Increased padding for more breathing room */
-  max-width: 800px; /* Centers and limits the width */
+  padding: 40px;
+  max-width: 800px;
   margin: 0 auto;
   box-sizing: border-box;
-  background-color: #ffffff; /* White background for the detail page */
+  background-color: #f2994a; /* Light orange for the center layout */
+  color: #ffffff; /* White text for better contrast */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ========== ArticleList Page Styles ========== */
 .article-list {
-  margin-top: 20px; /* Add some space above the list */
+  margin-top: 20px;
 }
 
 .article-grid {
-  display: grid; /* Ensure grid layout is set */
-  grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
-  gap: 20px; /* Space between grid items */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 /* Responsive Grid Layout */
 @media (max-width: 1024px) {
   .article-grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .article-grid {
-    grid-template-columns: 1fr; /* Single column for smaller screens */
+    grid-template-columns: 1fr;
   }
 }
 
@@ -48,26 +70,26 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
-  background-color: #fff;
+  background-color: #ffffff; /* White cards for readability */
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
-  width: 100%; /* Ensure cards take full width of their column */
-  overflow: hidden; /* Prevent content from overflowing the card */
+  width: 100%;
+  overflow: hidden;
 }
 
 .article-card img {
   width: 100%;
   height: auto;
-  max-height: 150px; /* Smaller max height to fit the card */
+  max-height: 150px;
   margin: 0 auto;
   border-radius: 8px;
   object-fit: cover;
 }
 
 .article-card h2.article-title {
-  font-size: 1.5rem; /* Slightly larger title size */
+  font-size: 1.5rem;
   margin: 10px 0;
-  color: #333;
+  color: #333333; /* Dark grey title */
 }
 
 .article-card:hover {
@@ -77,11 +99,11 @@
 
 .article-card .article-link {
   text-decoration: none;
-  color: inherit;
+  color: #004499; /* Navy blue links */
 }
 
 .article-card .article-link:hover h2.article-title {
-  color: #ff7f32;
+  color: #f2994a; /* Light orange on hover */
 }
 
 /* Enhanced Hover Effects */
@@ -90,14 +112,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ========== Debugging Style (Optional) ========== */
-/* Uncomment to visually debug layout boundaries */
-/*
-.article-card {
-  outline: 1px solid red;
-}
-*/
-
 /* ========== Responsive Comments Section ========== */
 .comment-list {
   margin-top: 20px;
@@ -105,26 +119,27 @@
 }
 
 .comment-card {
-  border: 1px solid #ddd; /* Light grey border */
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
-  background-color: #f9f9f9; /* Light grey background for comments */
+  background-color: #ffffff; /* White by default */
   margin-bottom: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .comment-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5dc; /* Cream tone on hover */
 }
 
 .comment-card p {
   margin: 8px 0;
-  color: #555; /* Dark grey text for comment body */
+  color: #333333;
 }
 
 .comment-card strong {
-  color: #333; /* Black text for the comment author's name */
+  color: #333333;
 }
 
 /* ========== Header Styles ========== */
@@ -133,55 +148,55 @@
   font-size: 2rem;
   font-weight: bold;
   padding: 20px;
-  background-color: #ff7f32; /* Orange background for header */
-  color: #ffffff; /* White text for header */
+  background-color: #f2994a; /* Light orange header background */
+  color: #ffffff; /* White text */
   width: 100%;
 }
 
 /* ========== Footer Styles ========== */
 .footer {
-  background-color: #333; /* Black background for footer */
-  color: white; /* White text */
+  background-color: #004499; /* Navy footer background */
+  color: #ffffff;
   text-align: center;
   padding: 10px 0;
 }
 
 /* ========== Button Styles ========== */
 .vote-button {
-  background-color: #007bff; /* Blue background for the buttons */
-  color: white; /* White text on the button */
-  border: 1px solid #ddd; /* Add a light border */
+  background-color: #f2994a; /* Light orange buttons */
+  color: white;
+  border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  transition: all 0.2s ease; /* Smooth transitions for all properties */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .vote-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Add a slight lift on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  background-color: #cc7a3c; /* Slightly darker orange */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .vote-button.upvote {
-  background-color: #28a745; /* Green for upvote button */
+  background-color: #28a745;
 }
 
 .vote-button.upvote:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838;
 }
 
 .vote-button.downvote {
-  background-color: #dc3545; /* Red for downvote button */
+  background-color: #dc3545;
 }
 
 .vote-button.downvote:hover {
-  background-color: #c82333; /* Darker red on hover */
+  background-color: #c82333;
 }
 
 /* ========== Login Message Styles ========== */
 .login-message {
   font-size: 1rem;
-  color: #777; /* Darker grey for the login message */
+  color: #777777; /* Slightly darker grey for login messages */
 }
