@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ArticleList from "../components/ArticleList";
 import ArticleDetail from "../components/ArticleDetail";
-import { getUsers } from "./api";
+import { getUsers } from "../src/api";
 import { UserProvider } from "./contexts/UserContext";
 import UserDropdown from "../components/UserDropdown";
 import Header from "../components/Header";
-// App.js or main entry file
 import "./index.css";
 
 function App() {
@@ -14,11 +13,16 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    getUsers()
-      .then((data) => setUsers(data))
-      .catch((err) => {
+    const fetchUsers = async () => {
+      try {
+        const data = await getUsers();
+        setUsers(data);
+      } catch (err) {
         console.error("Failed to fetch users", err);
-      });
+      }
+    };
+
+    fetchUsers();
   }, []);
 
   const isDetailPage = location.pathname.startsWith("/articles/");
@@ -27,7 +31,7 @@ function App() {
     <UserProvider>
       <div className={isDetailPage ? "center-layout" : "grid-layout"}>
         <Header />
-        <UserDropdown users={users} />
+        <UserDropdown users={users} /> {}
         <Routes>
           <Route path="/" element={<ArticleList />} />
           <Route path="/articles" element={<ArticleList />} />

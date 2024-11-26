@@ -12,6 +12,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "axios": "^1.7.3",
+    "axios-retry": "^4.5.0",
     "lottie-light-react": "^2.4.0",
     "nodemon": "^3.1.7",
     "react": "^18.3.1",

@@ -5,8 +5,16 @@ const CommentCard = ({ comment, onVoteUp, onVoteDown }) => {
   return (
     <div className="comment-card">
       <div className="comment-header">
-        <i className="fa-solid fa-comments comment-icon"></i>
-        <strong>{comment.author}</strong> says:
+        {/* Displaying avatar */}
+        <img
+          src={comment.avatar_url}
+          alt={`${comment.author}'s avatar`}
+          className="comment-avatar"
+        />
+        <div>
+          <i className="fa-solid fa-comments comment-icon"></i>
+          <strong>{comment.author}</strong> says:
+        </div>
       </div>
       <p className="comment-body">{comment.body}</p>
       <div className="comment-footer">
