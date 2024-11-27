@@ -12,37 +12,39 @@ import ErrorMessage from "./ErrorMessage";
 import "../src/index.css";
 
 const ArticleDetail = () => {
-  const { article_id } = useParams();
-  const { loggedInUser } = useContext(UserContext);
-  const [article, setArticle] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { article_id } = useParams(); // Get article_id from URL
+  const { loggedInUser } = useContext(UserContext); // Access logged-in user from context
+  const [article, setArticle] = useState(null); // Store article data
+  const [comments, setComments] = useState([]); // Store comments for the article
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
+  // Fetch article and comments when the component mounts or article_id changes
   useEffect(() => {
     if (article_id) {
       Promise.all([
-        getArticleById(article_id),
-        getCommentsByArticleId(article_id),
+        getArticleById(article_id), // Fetch article data
+        getCommentsByArticleId(article_id), // Fetch comments for the article
       ])
         .then(([articleData, commentsData]) => {
-          setArticle(articleData);
-          setComments(commentsData);
-          setLoading(false);
+          setArticle(articleData); // Set article data
+          setComments(commentsData); // Set comments data
+          setLoading(false); // Set loading state to false
         })
         .catch((err) => {
-          setLoading(false);
+          setLoading(false); // Set loading state to false if there's an error
           const errorMsg = err.response
             ? err.response.data.msg
-            : "An unexpected error occurred";
+            : "An unexpected error occurred"; // Get error message
           setError({ msg: errorMsg });
         });
     } else {
-      setLoading(false);
+      setLoading(false); // Set loading to false if article_id is invalid
       setError({ msg: "Invalid article ID" });
     }
-  }, [article_id]);
+  }, [article_id]); // Re-fetch on article_id change
 
+  // Handle voting logic (upvote/downvote)
   const handleVote = (direction) => {
     if (!loggedInUser) {
       alert("Log In To Vote");
@@ -53,9 +55,11 @@ const ArticleDetail = () => {
 
     const updatedVotes =
       direction === "up" ? article.votes + 1 : article.votes - 1;
-    setArticle((prevArticle) => ({ ...prevArticle, votes: updatedVotes }));
-    patchArticleVotes(article_id, direction === "up" ? 1 : -1).catch(
-      (error) => {
+    setArticle((prevArticle) => ({ ...prevArticle, votes: updatedVotes })); // Update local state
+
+    patchArticleVotes(article_id, direction === "up" ? 1 : -1) // Call API to update vote
+      .catch((error) => {
+        // Rollback in case of error
         setArticle((prevArticle) => ({
           ...prevArticle,
           votes: prevArticle.votes,
@@ -64,10 +68,10 @@ const ArticleDetail = () => {
           ? error.response.data.msg
           : "An unexpected error occurred";
         setError({ msg: errorMsg });
-      }
-    );
+      });
   };
 
+  // Loading or error states
   if (loading) return <Loading />;
   if (error) return <ErrorMessage msg={error.msg} />;
 
@@ -75,6 +79,7 @@ const ArticleDetail = () => {
     <div className="article-detail">
       {article && (
         <>
+          {/* Article Header */}
           <h1>{article.title}</h1>
           <p>By {article.author}</p>
           <p>
@@ -86,6 +91,8 @@ const ArticleDetail = () => {
             className="article-image"
           />
           <div className="article-body">{article.body}</div>
+
+          {/* Voting Section */}
           <div className="article-footer">
             <div className="article-vote-counter">
               <span>{article.votes}</span> Votes
@@ -109,11 +116,15 @@ const ArticleDetail = () => {
               <p className="login-message">Please log in to vote.</p>
             )}
           </div>
+
           <hr />
+
+          {/* Comments Section */}
           <h2>
             <i className="fa-solid fa-comments"></i> Comments
           </h2>
-          <CommentList article_id={article_id} />
+          {/* Render the CommentList component */}
+          <CommentList article_id={article_id} loggedInUser={loggedInUser} />
         </>
       )}
     </div>

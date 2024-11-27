@@ -1,20 +1,23 @@
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
+// Create an axios instance with retry configuration
 const apiClient = axios.create({
   baseURL: "https://newsflash-qdc3.onrender.com/api",
   timeout: 20000,
 });
 
+// Configure axios to retry on failure
 axiosRetry(apiClient, {
   retries: 3,
   retryDelay: axiosRetry.exponentialDelay,
   shouldResetTimeout: true, // Reset timeout after each retry
 });
 
+// Fetch all articles
 export function getArticles() {
   return apiClient
-    .get(`articles`)
+    .get("articles")
     .then((response) => {
       return response.data.articles;
     })
@@ -24,6 +27,7 @@ export function getArticles() {
     });
 }
 
+// Fetch a specific article by its ID
 export function getArticleById(article_id) {
   return apiClient
     .get(`articles/${article_id}`)
@@ -36,6 +40,7 @@ export function getArticleById(article_id) {
     });
 }
 
+// Fetch comments by article ID
 export function getCommentsByArticleId(article_id) {
   return apiClient
     .get(`articles/${article_id}/comments`)
@@ -51,6 +56,7 @@ export function getCommentsByArticleId(article_id) {
     });
 }
 
+// Update the votes for an article
 export function patchArticleVotes(article_id, inc_votes) {
   return apiClient
     .patch(`articles/${article_id}`, { inc_votes })
@@ -64,6 +70,7 @@ export function patchArticleVotes(article_id, inc_votes) {
     });
 }
 
+// Fetch all users
 export function getUsers() {
   return apiClient
     .get("users", { timeout: 20000 })
@@ -73,3 +80,27 @@ export function getUsers() {
       throw error;
     });
 }
+
+// Add a new comment to an article
+export const postComment = async (article_id, username, body) => {
+  try {
+    const response = await apiClient.post(`articles/${article_id}/comments`, {
+      username,
+      body,
+    });
+    return response.data.comment;
+  } catch (error) {
+    console.error("Error posting comment:", error);
+    throw error;
+  }
+};
+
+// Delete a comment by its ID
+export const deleteComment = async (comment_id) => {
+  try {
+    await apiClient.delete(`comments/${comment_id}`);
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    throw error;
+  }
+};
