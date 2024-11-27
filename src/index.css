@@ -93,8 +93,8 @@ body {
 }
 
 .article-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .article-card .article-link {
@@ -106,12 +106,6 @@ body {
   color: #f2994a;
 }
 
-/* Enhanced Hover Effects */
-.article-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 /* ========== Responsive Comments Section ========== */
 .comment-list {
   margin-top: 20px;
@@ -119,30 +113,32 @@ body {
 }
 
 .comment-card {
-  border: 1px solid #ddd;
+  border: 1px solid #db2d2d;
   border-radius: 8px;
   padding: 15px;
-  background-color: #ffffff;
+  background-color: #0234a1;
   margin-bottom: 10px;
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  color: #ffffff;
 }
 
 .comment-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  background-color: #f5f5dc;
+  background-color: #002b5f;
 }
 
 .comment-card p {
   margin: 8px 0;
-  color: #333333;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: "Arial", sans-serif;
 }
 
 .comment-card strong {
-  color: #333333;
+  color: #ffcc00;
 }
 
-/* ========== Updated Comment Header with Avatar ========== */
 .comment-header {
   display: flex;
   align-items: center;
@@ -158,9 +154,8 @@ body {
   border: 2px solid #ddd;
 }
 
-/* ========== Blue Comment Emoji Icon ========== */
 .fa-comments {
-  color: #004499; /* Blue color */
+  color: #004499;
 }
 
 /* ========== Footer Styles ========== */
@@ -205,10 +200,11 @@ body {
   background-color: #c82333;
 }
 
-/* ========== Login Message Styles ========== */
-.login-message {
-  font-size: 1rem;
-  color: #777777;
+.article-vote-counter {
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 /* ========== Lottie Animation Styles ========== */
@@ -235,4 +231,78 @@ body {
   background-color: transparent;
   box-shadow: none;
   margin: 0;
+}
+
+/* ========== UserDropdown Styles ========== */
+.user-dropdown {
+  background-color: #f5f5dc;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.user-dropdown h2 {
+  font-size: 1.2rem;
+  color: #333333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.user-dropdown h2::before {
+  content: "🔑 ";
+}
+
+.user-dropdown select {
+  width: 100%;
+  padding: 5px;
+  font-size: 1rem;
+  color: #333333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-dropdown select:hover {
+  border-color: #f2994a;
+  box-shadow: 0 0 6px rgba(242, 153, 74, 0.5);
+}
+
+.user-dropdown select:focus {
+  outline: none;
+  border-color: #004499;
+  box-shadow: 0 0 6px rgba(0, 68, 153, 0.7);
+}
+
+.user-dropdown button {
+  background-color: #dc3545;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.user-dropdown button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-dropdown p[role="status"] {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #070707;
 }

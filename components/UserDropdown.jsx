@@ -15,25 +15,42 @@ const UserDropdown = ({ users }) => {
 
   return (
     <div className="user-dropdown">
-      <h2>Login</h2>
+      <h2 className="user-dropdown__title">Login</h2>
       {loggedInUser ? (
-        <>
-          <p role="status">Logged in as: {loggedInUser}</p>
-          <button onClick={handleLogout}>Log Out</button>
-        </>
+        <div className="user-dropdown__logged-in">
+          <p className="user-dropdown__status" role="status">
+            Logged in as:{" "}
+            <span className="user-dropdown__username">{loggedInUser}</span>
+          </p>
+          <button
+            className="user-dropdown__logout-button"
+            onClick={handleLogout}
+          >
+            Log Out
+          </button>
+        </div>
       ) : (
-        <select
-          aria-label="Select a user to log in"
-          onChange={(e) => handleUserSelection(e.target.value)}
-          value={loggedInUser || ""}
-        >
-          <option value="">Select A User</option>
-          {users.map((user) => (
-            <option key={user.username} value={user.username}>
-              {user.name}
+        <div className="user-dropdown__login">
+          <select
+            className="user-dropdown__select"
+            aria-label="Select a user to log in"
+            onChange={(e) => handleUserSelection(e.target.value)}
+            value={loggedInUser || ""}
+          >
+            <option value="" className="user-dropdown__option">
+              Select A User
             </option>
-          ))}
-        </select>
+            {users.map((user) => (
+              <option
+                key={user.username}
+                value={user.username}
+                className="user-dropdown__option"
+              >
+                {user.name}
+              </option>
+            ))}
+          </select>
+        </div>
       )}
     </div>
   );
