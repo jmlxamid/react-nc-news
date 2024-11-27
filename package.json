@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite",                              
+    "build": "vite build",                      
+    "start": "serve -s build",                  
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -18,7 +19,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4"                          
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
